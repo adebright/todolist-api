@@ -1,0 +1,51 @@
+include includes/header.pug
+block content 
+  main 
+    h1 Welcome #{result.name.toUpperCase()} 
+    // This is a comment 
+    p #[a(href='/logout') Logout] 
+    - let updateUrl = '/user/' + result._id + '/update'
+    - let deleteUrl = '/user/' + result._id + '/delete'
+    - let profileUrl = '/user/' + result._id + '/profile'
+    p #[a(href= updateUrl) Update your account] 
+    p #[a(href= deleteUrl) Delete your account]
+    p #[a(href= profileUrl) Update your profile]
+    form(method="post" action= "")
+        label(for="Item name") Item Name
+        input(type="text" placeholder="Enter an Item name" name="name") 
+        input(type="hidden" name ="user" value=  result._id)
+        button(type="submit" name="submit") Create 
+    
+    if items
+      h2.text-center Todo list History   
+      - let length = items.length 
+      table(class="table table-bordered")
+        // caption Items created by #{result.name.toUpperCase()} 
+        thead 
+          tr 
+            th S/N 
+            th Item Name 
+            th Date Created 
+            th Completed  
+            th Delete
+        each item , index in items 
+          tr.list-history 
+            - let month = parseInt(item.date_created.getMonth()) + 1  
+            - let date  = item.date_created.getFullYear() + '-' + month + '-' + item.date_created.getDate()
+            - let time  = item.date_created.getHours() + ' ' + item.date_created.getMinutes() 
+            - let isOk = item.completed 
+            td #{index + 1}   
+            if isOk 
+              td  #[input(type="text" size="40" disabled value = item.name) ] 
+            else  
+              td  #[input(type="text" size="40" disabled value = item.name) ]
+            td #{date + ' : ' + ' ' + time}  
+            td  #{String(item.completed).toUpperCase()} #[i(class="fas fa-toggle-on fa-2x")]
+            td #[i(class="fas fa-times")]
+    else 
+      p You have no active item 
+    
+
+     
+    
+    

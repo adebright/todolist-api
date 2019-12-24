@@ -1,0 +1,12 @@
+include includes/header.pug 
+block content 
+  main 
+    div.container 
+      div.col-md-3 
+      div.col-md-6.text-center
+        form(action='' method="post" enctype="multipart/form-data" class="form-horizontal") 
+          p#displayImage 
+          label(for="profile") Select an image 
+          input(type="file" class="form-control" name="profile" id="profile" multiple accept="image/*") 
+          button(type="submit" ) Upload 
+  script(src="/handleImage.js")

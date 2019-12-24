@@ -1,0 +1,31 @@
+extends layout
+
+block content 
+  nav(role="navigation" class="navbar navbar-expand-md navbar-dark fixed-top dashboard")
+    a(class='navbar-brand' , href='/') ACE TODO
+    button(class='navbar-toggler' type="button" data-toggle="collapse" data-target="#siteNav"
+    arials-control="nav-toggle" aria-expanded="false")
+      span.navbar-toggler-icon
+    div(class="collapse navbar-collapse" id="siteNav")
+      ul(class='navbar-nav') 
+        li.nav-item #[a(class='nav-link' href='/about') Todos]
+        li.nav-item #[a(class='nav-link' href='/features') Chat]
+        li.nav-item #[a(class='nav-link' href='/profile') Profile]
+        li.nav-item #[a(class='nav-link' href='/logout') Logout]
+  main 
+    div.container-fluid 
+      if info 
+        input(type='search' placeholder='Which item are you looking for')
+        h2(class='dashboard-user') Welcome #{user.name} 
+      div.row 
+        div.col-md-4 
+          if items.length == 0 
+            h3 You have no items yet 
+          else 
+            ul
+            each item in items 
+              li item.name  item.completed 
+
+     
+    
+    

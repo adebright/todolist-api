@@ -1,0 +1,47 @@
+include includes/header.pug
+
+block content 
+  nav(role="navigation" class="navbar navbar-expand-md navbar-dark fixed-top home-nav")
+    a(class='navbar-brand' , href='/') TODO
+    button(class='navbar-toggler' type="button" data-toggle="collapse" data-target="#siteNav"
+    arials-control="nav-toggle" aria-expanded="false")
+      span.navbar-toggler-icon
+    div(class="collapse navbar-collapse" id="siteNav")
+      ul(class='navbar-nav pull-left') 
+        li.nav-item #[a(class='nav-link' href='/about') About]
+        li.nav-item #[a(class='nav-link' href='/signup') Signup]
+        li.nav-item #[a(class='nav-link' href='/login') Login]
+  div(class='jumbotron text-center')
+    h2 Welcome to TODO
+    p  Create and Manage your list items all in one place 
+    a(class='btn btn-primary btn-lg' , href='/signup') Get Started  
+  main 
+    div(class="container") 
+      h2(class='text-center container-heading') Features that make our list tick 
+      if testSession 
+        p.text-center #{testSession} 
+      else 
+        p.text-center  E no dey
+      div(class="row text-center") 
+        div(class="col-md-4") 
+          h3 Easily create items 
+          p Creating list item is a one way task 
+          a(class='btn btn-primary' href='/login') Create 
+        div(class="col-md-4") 
+          h3 Manage items 
+          p Managing items is made very easy and exciting
+          a(class='btn btn-primary' , href='/login') Manage 
+        div(class="col-md-4") 
+          h3 Distribute items 
+          p You can share your items around the globe
+          a(class='btn btn-primary' ,href='/login') Share
+    div.container 
+      if totalUsers
+        h2 Total users : #{totalUsers}
+      if users
+        h2(class='text-center container-heading') Registered users
+        each user in users
+          p #[span #[strong Name ] #{user.name}] &nbsp; #[span #[strong Email]  #{user.email} ]
+          
+         
+          hr 

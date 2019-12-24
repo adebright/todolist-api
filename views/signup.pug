@@ -1,0 +1,39 @@
+extends layout 
+block content 
+  main 
+    div(class='container')
+      h1(class='text-center form-title')= title  
+      div(id="root") 
+      div(class='row') 
+        div(class='col-md-3') 
+        div(class='col-md-6')
+          if name 
+            p #{name} 
+          else 
+            p Learner 
+          form(action='' , method='POST' class='signup-form') 
+            if regError 
+              p(class='registration-error')  #{regError}
+            label(for='name') Name 
+            input(type='text' , placeholder='Enter your user name' , 
+              | class='form-control' , name='name' id='name') 
+            p(class='name-feedback')
+            label(for='email') Email
+            input(type='text' , placeholder='Enter your user name' ,
+              | class='form-control' , name='email' id='email' required) 
+            span(class='email-feedback')
+            label(for='password') Password
+            input(type='password' ,  class='form-control' , 
+              | name='password' id='password' required)
+            span(class='password-feedback')
+            label(for='password') Confirm Password
+            input(type='password' ,  class='form-control' , 
+              | name='confirmPassword' id='confirmPassword' required)
+            span(class='confirmPassword-feedback')
+            label(for='submit' class="send")
+            input(type='submit'  , class='form-control' , name='submit' id='submit' value='Sign up') 
+            if errors 
+                each error in errors 
+                  p!=  error.msg
+        div(class='col-md-3') 
+  script(src='/javascripts/signup.js')

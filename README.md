@@ -18,7 +18,7 @@ At the end of studying the code in this repository , you should be able to under
 1. Design and model database using a document database (Mongodb)
 1. Design and implement a RESTful API
 1. Understand how to use POSTMAN
-1. Perform CRUD operations with mongoose query API's
+1. Perform CRUD operations with mongoose query API
 **How to Learn using this repo** 
 * Read the codes and try to understand what each line is doing
 * Submit explanatory codes on javascript topics related to the project 
